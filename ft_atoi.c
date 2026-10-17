@@ -15,28 +15,28 @@
 int	ft_atoi(char const *nptr)
 {
 	int	i;
-	int	s;
-	int	r;
+	int	sign;
+	int	result;
 
 	i = 0;
-	s = 1;
-	r = 0;
+	sign = 1;
+	result = 0;
 	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
 		i++;
 	if (nptr[i] == '-')
 	{
-		s = -1;
+		sign = -1;
 		i++;
 	}
 	else if (nptr[i] == '+')
 		i++;
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		if (r < 0 && s < 0)
+		if (result < 0 && sign < 0)
 			return (0);
-		else if (r < 0 && s > 0)
+		else if (result < 0 && sign > 0)
 			return (-1);
-		r = r * 10 + nptr[i++] - '0';
+		result = result * 10 + nptr[i++] - '0';
 	}
-	return (r * s);
+	return (result * sign);
 }
